@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2028音乐高考备战手册</title>
+<style>
+  :root {
+    --primary: #6c3a9e;
+    --primary-light: #f3edf9;
+    --accent: #e8913a;
+    --success: #2d9d5a;
+    --warning: #d4a00b;
+    --danger: #d14343;
+    --bg: #f8f7fa;
+    --card: #fff;
+    --text: #2d2d3a;
+    --text-light: #6b6b7b;
+    --border: #e8e5ef;
+    --radius: 12px;
+    --shadow: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+    --shadow-lg: 0 4px 16px rgba(0,0,0,.08), 0 2px 4px rgba(0,0,0,.04);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Header ── */
+  .hero {
+    background: linear-gradient(135deg, #2d1b4e 0%, #4a2c7a 30%, #6c3a9e 60%, #8b5cb8 100%);
+    color: #fff; padding: 56px 24px 48px; text-align: center; position: relative; overflow: hidden;
+  }
+  .hero::after {
+    content:''; position:absolute; inset:0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  .hero h1 { font-size: 2.4rem; font-weight:800; letter-spacing: 1px; position:relative; z-index:1; }
+  .hero .sub { margin-top: 8px; font-size: 1.1rem; opacity: .85; position:relative; z-index:1; }
+  .hero .badge-row { margin-top: 16px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap; position:relative; z-index:1; }
+  .hero .badge {
+    background: rgba(255,255,255,.15); backdrop-filter:blur(4px);
+    padding: 4px 14px; border-radius: 20px; font-size: .88rem; border:1px solid rgba(255,255,255,.2);
+  }
+  .hero .last-update { margin-top: 12px; font-size: .78rem; opacity: .6; position:relative; z-index:1; }
+
+  /* ── Container ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+
+  /* ── Sticky nav ── */
+  .nav-bar {
+    position:sticky; top:0; z-index:100;
+    background: rgba(255,255,255,.92); backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--border);
+    padding: 0 20px; overflow-x:auto; white-space:nowrap;
+    display:flex; gap:4px; justify-content:center;
+  }
+  .nav-bar a {
+    display:inline-block; padding:12px 16px; font-size:.86rem; font-weight:600;
+    color:var(--text-light); text-decoration:none; border-bottom:2px solid transparent;
+    transition: all .2s;
+  }
+  .nav-bar a:hover, .nav-bar a.active { color:var(--primary); border-bottom-color:var(--primary); }
+
+  /* ── Sections ── */
+  section { padding: 40px 0; }
+  section h2 {
+    font-size: 1.5rem; font-weight: 800; color: var(--primary);
+    padding-bottom: 8px; border-bottom: 3px solid var(--primary-light); margin-bottom: 24px;
+    display:flex; align-items:center; gap:10px;
+  }
+  section h2 .icon { font-size:1.3rem; }
+  section h3 { font-size: 1.15rem; font-weight: 700; margin: 20px 0 10px; color: #3d2a5e; }
+
+  /* ── Cards ── */
+  .card {
+    background: var(--card); border-radius: var(--radius); padding: 24px;
+    box-shadow: var(--shadow); margin-bottom: 16px; border:1px solid var(--border);
+  }
+  .card-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:16px; }
+
+  /* ── Stat boxes ── */
+  .stat-row { display:flex; flex-wrap:wrap; gap:16px; margin-bottom: 16px; }
+  .stat-box {
+    flex:1; min-width:140px; background:var(--card); border-radius:var(--radius);
+    padding:20px; text-align:center; box-shadow:var(--shadow); border:1px solid var(--border);
+  }
+  .stat-box .num { font-size:2rem; font-weight:800; color:var(--primary); }
+  .stat-box .lbl { font-size:.82rem; color:var(--text-light); margin-top:4px; }
+  .stat-box.goal .num { color:var(--accent); }
+
+  /* ── Tables ── */
+  table { width:100%; border-collapse:collapse; font-size:.9rem; margin:12px 0; }
+  th { background:var(--primary-light); color:var(--primary); font-weight:700; padding:10px 12px; text-align:left; }
+  td { padding:10px 12px; border-bottom:1px solid var(--border); }
+  tr:hover td { background:#faf9fc; }
+
+  /* ── Timeline ── */
+  .timeline { position:relative; padding-left:32px; }
+  .timeline::before { content:''; position:absolute; left:12px; top:0; bottom:0; width:2px; background:var(--border); }
+  .tl-item { position:relative; margin-bottom:24px; }
+  .tl-item::before {
+    content:''; position:absolute; left:-24px; top:4px;
+    width:10px; height:10px; border-radius:50%; background:var(--primary); border:2px solid #fff; box-shadow:0 0 0 2px var(--primary);
+  }
+  .tl-item.done::before { background:var(--success); box-shadow:0 0 0 2px var(--success); }
+  .tl-item.now::before { background:var(--accent); box-shadow:0 0 0 2px var(--accent); animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100% { box-shadow:0 0 0 2px var(--accent); } 50% { box-shadow:0 0 0 6px rgba(232,145,58,.3); } }
+  .tl-item .tl-date { font-size:.8rem; color:var(--accent); font-weight:700; }
+  .tl-item .tl-title { font-weight:700; font-size:1.05rem; margin:2px 0; }
+  .tl-item .tl-desc { font-size:.9rem; color:var(--text-light); }
+
+  /* ── Calculator ── */
+  .calc-box {
+    background: linear-gradient(135deg, #faf8ff, #f3edf9);
+    border-radius: var(--radius); padding: 28px; border:2px dashed var(--primary-light);
+  }
+  .calc-row { display:flex; gap:16px; flex-wrap:wrap; align-items:end; margin-bottom:16px; }
+  .calc-field { flex:1; min-width:180px; }
+  .calc-field label { display:block; font-weight:700; font-size:.88rem; margin-bottom:4px; color:var(--text-light); }
+  .calc-field input { width:100%; padding:10px 14px; border:1px solid var(--border); border-radius:8px; font-size:1.1rem; font-weight:600; }
+  .calc-field input:focus { outline:none; border-color:var(--primary); box-shadow:0 0 0 3px var(--primary-light); }
+  .calc-result {
+    background:#fff; border-radius:10px; padding:20px; text-align:center; margin-top:16px;
+  }
+  .calc-result .big { font-size:2.6rem; font-weight:800; color:var(--primary); }
+  .calc-result .verdict { font-size:1rem; margin-top:6px; font-weight:700; }
+  .calc-result .verdict.good { color:var(--success); }
+  .calc-result .verdict.warn { color:var(--warning); }
+  .calc-result .verdict.bad { color:var(--danger); }
+
+  /* ── Resource links ── */
+  .res-list { list-style:none; }
+  .res-list li { padding:10px 0; border-bottom:1px solid var(--border); display:flex; align-items:center; gap:8px; }
+  .res-list li:last-child { border-bottom:none; }
+  .res-list a { color:var(--primary); font-weight:600; text-decoration:none; }
+  .res-list a:hover { text-decoration:underline; }
+  .res-list .tag {
+    font-size:.72rem; padding:2px 8px; border-radius:10px; font-weight:600;
+    background:var(--primary-light); color:var(--primary);
+  }
+
+  /* ── Alert / Callout ── */
+  .callout {
+    border-radius: var(--radius); padding:16px 20px; margin:12px 0;
+    border-left:4px solid; font-size:.92rem;
+  }
+  .callout.tip { background:#eef7f1; border-color:var(--success); }
+  .callout.warn { background:#fef9e7; border-color:var(--warning); }
+  .callout.info { background:#eef3fb; border-color:#3b82f6; }
+
+  /* ── Update log ── */
+  .log-entry { padding: 12px 0; border-bottom: 1px solid var(--border); }
+  .log-entry:last-child { border-bottom:none; }
+  .log-entry .log-date { font-size:.78rem; color:var(--text-light); font-weight:600; }
+  .log-entry .log-tag { font-size:.72rem; padding:2px 8px; border-radius:10px; font-weight:600; margin-left:6px; }
+  .log-entry .log-tag.policy { background:#eef3fb; color:#3b82f6; }
+  .log-entry .log-tag.data { background:#eef7f1; color:var(--success); }
+  .log-entry .log-tag.todo { background:#fef9e7; color:var(--warning); }
+
+  /* ── Footer ── */
+  footer {
+    text-align:center; padding:32px 20px; color:var(--text-light); font-size:.82rem;
+    border-top:1px solid var(--border); margin-top:20px;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width:640px) {
+    .hero h1 { font-size:1.6rem; }
+    .stat-box .num { font-size:1.5rem; }
+    .calc-row { flex-direction:column; }
+  }
+
+  /* Print */
+  @media print {
+    .nav-bar { display:none; }
+    .hero { padding:24px; }
+    body { font-size:12px; }
+    section { padding:16px 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ HEADER ═══════════════ -->
+<div class="hero">
+  <h1>2028 音乐高考备战手册</h1>
+  <p class="sub">目标：安徽师范大学 · 音乐学（师范）&nbsp; | &nbsp;声乐主项 + 钢琴副项</p>
+  <div class="badge-row">
+    <span class="badge">2028届高考</span>
+    <span class="badge">安徽芜湖</span>
+    <span class="badge">音乐教育方向</span>
+    <span class="badge">省统考 · 安师大考点</span>
+  </div>
+  <p class="last-update">最后更新：2026年5月25日</p>
+</div>
+
+<!-- ═══════════════ NAV ═══════════════ -->
+<nav class="nav-bar" id="nav">
+  <a href="#dashboard">目标速览</a>
+  <a href="#school">目标院校</a>
+  <a href="#strategy">备考策略</a>
+  <a href="#timeline">时间轴</a>
+  <a href="#calculator">综合分计算器</a>
+  <a href="#sources">信息来源</a>
+  <a href="#watchout">注意事项</a>
+  <a href="#checklist">阶段清单</a>
+  <a href="#log">更新日志</a>
+</nav>
+
+<div class="container">
+
+<!-- ═══════════════ 1. DASHBOARD ═══════════════ -->
+<section id="dashboard">
+  <h2><span class="icon">🎯</span> 目标速览</h2>
+  <div class="stat-row">
+    <div class="stat-box goal">
+      <div class="num">安师大</div>
+      <div class="lbl">目标院校</div>
+    </div>
+    <div class="stat-box goal">
+      <div class="num">505+</div>
+      <div class="lbl">目标综合分</div>
+    </div>
+    <div class="stat-box">
+      <div class="num">≈前1000</div>
+      <div class="lbl">省内需排名</div>
+    </div>
+    <div class="stat-box">
+      <div class="num">50%</div>
+      <div class="lbl">文化课占比</div>
+    </div>
+    <div class="stat-box">
+      <div class="num">400-450</div>
+      <div class="lbl">文化课目标分</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>基本信息卡</h3>
+    <table>
+      <tr><td width="120"><strong>所在城市</strong></td><td>安徽芜湖</td></tr>
+      <tr><td><strong>高考年份</strong></td><td>2028年6月</td></tr>
+      <tr><td><strong>统考时间</strong></td><td>2027年11月中旬（预计）</td></tr>
+      <tr><td><strong>报考类别</strong></td><td>音乐教育类（自动兼报音乐表演类）</td></tr>
+      <tr><td><strong>主项</strong></td><td>声乐（165分）</td></tr>
+      <tr><td><strong>副项</strong></td><td>钢琴（75分）</td></tr>
+      <tr><td><strong>小三门</strong></td><td>乐理15 + 听写30 + 视唱15 = 60分</td></tr>
+      <tr><td><strong>专业总分</strong></td><td>300分</td></tr>
+      <tr><td><strong>现有基础</strong></td><td>钢琴十级 / 声乐学习中</td></tr>
+      <tr><td><strong>考试地点</strong></td><td>安徽师范大学（赭山校区/花津校区）— 就在芜湖</td></tr>
+      <tr><td><strong>选科组合</strong></td><td>待确认（建议关注历史/物理分开划线的影响）</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ═══════════════ 2. TARGET SCHOOL ═══════════════ -->
+<section id="school">
+  <h2><span class="icon">🏫</span> 目标院校深度分析</h2>
+
+  <div class="card">
+    <h3>安徽师范大学 · 音乐学院</h3>
+    <p style="color:var(--text-light);margin-bottom:16px;">位于芜湖市，安徽省音乐教育最高学府，省内超60%中小学音乐骨干教师毕业于此。</p>
+    <table>
+      <tr><th>项目</th><th>数据</th><th>备注</th></tr>
+      <tr><td>专业名称</td><td>音乐学（师范）</td><td>音乐教育方向，非表演方向</td></tr>
+      <tr><td>2024年招生计划</td><td>约80人（含省外5人）</td><td>省内约75个名额</td></tr>
+      <tr><td>2024年最低综合分</td><td><strong>505.01分</strong></td><td>此为可供参考的最新数据</td></tr>
+      <tr><td>2024年最低排名</td><td><strong>第971名</strong></td><td>全省音乐类排名</td></tr>
+      <tr><td>录取批次</td><td>统考本科批次（平行志愿）</td><td>使用省统考成绩，无需校考</td></tr>
+      <tr><td>文化课门槛</td><td>≥普通本科线75%（约320-345分）</td><td>但实际录取远高于门槛</td></tr>
+      <tr><td>主要就业方向</td><td>中小学音乐教师（考编）</td><td>师范类毕业生83%进入教育行业</td></tr>
+      <tr><td>就业地区</td><td>安徽63% / 江苏15% / 上海5% / 浙江3%</td><td>长三角就业优势明显</td></tr>
+      <tr><td>考研升学率</td><td>约30%+</td><td>学院保研+考研通道成熟</td></tr>
+    </table>
+  </div>
+
+  <div class="callout info">
+    <strong>定位判断：</strong>安师大在安徽省音乐教育方向属于<strong>第一选择</strong>，既不是高不可攀（如央音/上音需要校考+超高专业水准），也不是随便能上（全省前1000名才有把握）。属于<strong>"跳一跳够得着"的目标</strong>，非常适合孩子当前定位。
+  </div>
+
+  <h3>备选院校梯度</h3>
+  <table>
+    <tr><th>梯度</th><th>院校</th><th>综合分参考</th><th>排名参考</th><th>说明</th></tr>
+    <tr><td><strong>冲刺</strong></td><td>南京师范大学 / 上海师大</td><td>520+</td><td>前500</td><td>省外优质师范，需极高综合分</td></tr>
+    <tr><td><strong>核心目标</strong></td><td>安徽师范大学</td><td>505+</td><td>前1000</td><td>省内音乐教育首选</td></tr>
+    <tr><td><strong>稳妥</strong></td><td>安徽艺术学院</td><td>专业分185-205</td><td>—</td><td>音乐表演方向，招180人</td></tr>
+    <tr><td><strong>稳妥</strong></td><td>安庆师范大学</td><td>505</td><td>约1000</td><td>音乐学招80人</td></tr>
+    <tr><td><strong>保底</strong></td><td>合肥师范学院 / 亳州学院</td><td>406-433</td><td>—</td><td>师范类，就业也不错</td></tr>
+  </table>
+</section>
+
+<!-- ═══════════════ 3. STRATEGY ═══════════════ -->
+<section id="strategy">
+  <h2><span class="icon">♟️</span> 备考策略：声乐主项 + 钢琴副项</h2>
+
+  <div class="card">
+    <h3>为什么推荐这个组合</h3>
+    <table>
+      <tr><th>考量因素</th><th>分析</th></tr>
+      <tr><td>钢琴竞争</td><td>钢琴是艺考最大热门乐器之一，考生基数庞大，安师大钢琴方向专业分要求高。以孩子钢琴十级的水平，在钢琴专项赛道中可能不占优势</td></tr>
+      <tr><td>声乐优势</td><td>声乐考生虽也多，但如果嗓音条件好+系统训练，进步空间大。声乐主项165分权重远高于副项75分</td></tr>
+      <tr><td>钢琴副项</td><td>副项75分用钢琴：钢琴十级基础足够应对副项难度，不需要额外投入大量时间，可以"降维打击"</td></tr>
+      <tr><td>加分效应</td><td>有声乐+钢琴双能力的考生在音乐教育方向有综合优势，体现"能唱能弹能教"的师范生素养</td></tr>
+      <tr><td>面试印象</td><td>音乐教育面试中，展示声乐能力（感染力强）+ 钢琴能力（功底扎实），给考官的印象更全面</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>各科目备考重心</h3>
+    <table>
+      <tr><th>科目</th><th>分值</th><th>目标分</th><th>策略</th></tr>
+      <tr><td>声乐主项</td><td>165</td><td>130-145</td><td>每周至少2-3次专业课，选2-3首考试曲目精雕细琢，注意背谱+无伴奏清唱</td></tr>
+      <tr><td>钢琴副项</td><td>75</td><td>55-65</td><td>利用现有十级功底，选1首练习曲+1首乐曲保持手感即可，每周练2-3次</td></tr>
+      <tr><td>视唱</td><td>15</td><td>12-14</td><td>每天15分钟，音准+节奏是核心，推荐使用视唱教材每天练2-3条</td></tr>
+      <tr><td>听写</td><td>30</td><td>22-26</td><td>旋律听写+节奏听写，每周至少3次专项训练，APP辅助练习</td></tr>
+      <tr><td>乐理</td><td>15</td><td>12-14</td><td>系统学一遍教材+刷真题，高分可控。钢琴十级乐理基础可直接迁移</td></tr>
+      <tr><td><strong>专业合计</strong></td><td><strong>300</strong></td><td><strong>230-260</strong></td><td>230分以上配合文化课400+可冲安师大</td></tr>
+    </table>
+  </div>
+
+  <div class="card-grid">
+    <div class="card">
+      <h3>文化课各科建议</h3>
+      <table>
+        <tr><td>语文</td><td>100-110</td><td>作文多练，基础分不丢</td></tr>
+        <tr><td>数学</td><td>70-85</td><td>抓基础题前70%</td></tr>
+        <tr><td>英语</td><td>90-105</td><td>词汇量+阅读，艺考生拉分项</td></tr>
+        <tr><td>选科1</td><td>65-75</td><td>选擅长的科目</td></tr>
+        <tr><td>选科2</td><td>65-75</td><td>同上</td></tr>
+        <tr><td><strong>合计</strong></td><td><strong>390-450</strong></td><td></td></tr>
+      </table>
+    </div>
+    <div class="card">
+      <h3>综合分模拟推算</h3>
+      <p style="margin-bottom:12px;">以不同组合模拟最终综合分：</p>
+      <table>
+        <tr><th>专业分</th><th>文化课</th><th>综合分</th><th>结果</th></tr>
+        <tr><td>240</td><td>420</td><td><strong>510</strong></td><td style="color:var(--success)">稳上安师大 ✓</td></tr>
+        <tr><td>240</td><td>380</td><td><strong>490</strong></td><td style="color:var(--warning)">边缘，需冲刺</td></tr>
+        <tr><td>230</td><td>430</td><td><strong>503</strong></td><td style="color:var(--success)">有希望 ✓</td></tr>
+        <tr><td>230</td><td>380</td><td><strong>478</strong></td><td style="color:var(--danger)">不够，需提高</td></tr>
+        <tr><td>220</td><td>450</td><td><strong>500</strong></td><td style="color:var(--warning)">文化课拉分</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ 4. TIMELINE ═══════════════ -->
+<section id="timeline">
+  <h2><span class="icon">📅</span> 备考时间轴</h2>
+  <p style="color:var(--text-light);margin-bottom:20px;">从今天到高考，每一步的目标和行动。</p>
+
+  <div class="timeline">
+
+    <div class="tl-item now">
+      <div class="tl-date">2026年5月–8月 · 当前阶段</div>
+      <div class="tl-title">基础巩固期</div>
+      <div class="tl-desc">
+        ✅ 确认声乐主项方向，选定声乐老师并开始系统训练<br>
+        ✅ 小三门（乐理/视唱/练耳）启动，每周至少2次课<br>
+        ✅ 文化课不掉队，数学英语持续保温<br>
+        ✅ 暑期可安排短期集训（2-4周）体验节奏<br>
+        ✅ 物色并考察芜湖本地培训机构
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-date">2026年9月–2027年1月 · 高二上学期</div>
+      <div class="tl-title">专业加速期</div>
+      <div class="tl-desc">
+        声乐主项每周2-3次课，曲目积累3-5首备选<br>
+        小三门系统推进，视唱练耳每日坚持<br>
+        钢琴保持每周2-3次练习，维护手感<br>
+        关注2027届统考动态，了解最新考试要求<br>
+        文化课保持中上水平
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-date">2027年2月–6月 · 高二下学期</div>
+      <div class="tl-title">专业强化期</div>
+      <div class="tl-desc">
+        声乐曲目基本确定，开始精抠细节<br>
+        小三门进入真题训练阶段<br>
+        第一次全真模拟考试（自测或机构组织）<br>
+        文化课开始关注艺考生专项复习资料
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-date">2027年7月–8月 · 考前暑假</div>
+      <div class="tl-title">🔥 全封闭集训期（最关键的两个月）</div>
+      <div class="tl-desc">
+        参加全日制集训班，每天8-10小时专业训练<br>
+        声乐每日练声+抠曲，钢琴每日保持<br>
+        小三门强化突击，真题+模拟密集训练<br>
+        至少参加2-3次全真模拟，适应考试节奏<br>
+        文化课暂时让位但不断线（英语单词每日保持）
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-date">2027年9月–10月 · 统考冲刺期</div>
+      <div class="tl-title">考前最后冲刺</div>
+      <div class="tl-desc">
+        曲目最终确定并反复打磨<br>
+        邀请有评委经验的老师做考前点评<br>
+        心理调节+身体状态管理（嗓子保护！）<br>
+        确认报名、证件、考试流程
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-date">2027年11月中旬 · 省统考</div>
+      <div class="tl-title">🎵 安徽省音乐类统一考试</div>
+      <div class="tl-desc">
+        考点：安徽师范大学（赭山校区/花津校区）<br>
+        面试：声乐+钢琴+视唱（11月16日起）<br>
+        笔试：乐理+听写（统一时间，11月19日下午左右）<br>
+        ⚠️ 声乐/器乐均无伴奏、须背谱<br>
+        考后约1个月出成绩
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-date">2027年12月–2028年1月 · 校考期</div>
+      <div class="tl-title">选择性校考</div>
+      <div class="tl-desc">
+        根据统考成绩判断是否需要校考<br>
+        如果统考成绩理想（排名前1000），可全力转文化课<br>
+        如果统考不够理想，可考虑省外校考作为补充
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-date">2028年1月–6月 · 文化课冲刺期</div>
+      <div class="tl-title">📚 全身心文化课</div>
+      <div class="tl-desc">
+        脱离专业训练，全力投入文化课<br>
+        推荐参加艺考生文化课专项班<br>
+        重点突破：数学基础+英语阅读+语文作文<br>
+        目标：文化课稳定在400-450分
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-date">2028年6月7-9日 · 高考</div>
+      <div class="tl-title">全国统一高考</div>
+      <div class="tl-desc">文化课考试 · 最后一战</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-date">2028年6月下旬–7月 · 志愿填报</div>
+      <div class="tl-title">出分 + 填志愿</div>
+      <div class="tl-desc">
+        综合分公布 → 全省排名确认 → 填报平行志愿（20个院校专业组）<br>
+        第一志愿：安徽师范大学音乐学（师范）
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════ 5. CALCULATOR ═══════════════ -->
+<section id="calculator">
+  <h2><span class="icon">🧮</span> 综合分计算器</h2>
+  <p style="color:var(--text-light);margin-bottom:16px;">输入预估分数，实时计算综合分，看看离安师大还有多远。</p>
+
+  <div class="calc-box">
+    <div class="calc-row">
+      <div class="calc-field">
+        <label>文化课成绩（满分750）</label>
+        <input type="number" id="cultureScore" value="420" min="0" max="750" oninput="calc()">
+      </div>
+      <div class="calc-field">
+        <label>专业统考成绩（满分300）</label>
+        <input type="number" id="profScore" value="240" min="0" max="300" oninput="calc()">
+      </div>
+    </div>
+    <div class="calc-result">
+      <div style="font-size:.9rem;color:var(--text-light);">综合分</div>
+      <div class="big" id="result">510.00</div>
+      <div style="font-size:.82rem;color:var(--text-light);margin-top:2px;">
+        公式：文化课 × 50% + 专业课 × 2.5 × 50%
+      </div>
+      <div class="verdict" id="verdict">稳上安师大 ✓</div>
+      <div style="font-size:.82rem;color:var(--text-light);margin-top:6px;">
+        安师大参考线：505分 / 省内排名需约前1000名
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ 6. INFORMATION SOURCES ═══════════════ -->
+<section id="sources">
+  <h2><span class="icon">📡</span> 信息来源与持续关注渠道</h2>
+
+  <div class="card">
+    <h3>官方渠道（必须持续关注）</h3>
+    <ul class="res-list">
+      <li>
+        <span class="tag">官网</span>
+        <div>
+          <a href="https://www.ahzsks.cn" target="_blank">安徽省教育招生考试院</a>
+          <br><span style="font-size:.82rem;color:var(--text-light);">最权威！统考政策、报名通知、成绩查询、分数线、志愿填报全部在这里发布。建议设为浏览器首页。</span>
+        </div>
+      </li>
+      <li>
+        <span class="tag">官网</span>
+        <div>
+          <a href="https://music.ahnu.edu.cn" target="_blank">安徽师范大学音乐学院</a>
+          <br><span style="font-size:.82rem;color:var(--text-light);">招生简章、录取数据、专业介绍、就业动态。每年6-7月发布最新招生计划和录取分数。</span>
+        </div>
+      </li>
+      <li>
+        <span class="tag">官网</span>
+        <div>
+          <a href="https://jyt.ah.gov.cn" target="_blank">安徽省教育厅</a>
+          <br><span style="font-size:.82rem;color:var(--text-light);">艺考政策文件的原始发布地，重大政策变化最早从这里出。</span>
+        </div>
+      </li>
+      <li>
+        <span class="tag">公众号</span>
+        <div>
+          <strong>安徽省教育招生考试院</strong> 微信公众号
+          <br><span style="font-size:.82rem;color:var(--text-light);">微信搜索关注，第一时间推送政策变化和考试通知。</span>
+        </div>
+      </li>
+      <li>
+        <span class="tag">平台</span>
+        <div>
+          <a href="https://gaokao.chsi.com.cn" target="_blank">阳光高考网（教育部）</a>
+          <br><span style="font-size:.82rem;color:var(--text-light);">全国艺考政策总览，各省政策对比，院校招生章程查询。</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>数据查询渠道（填志愿时用）</h3>
+    <ul class="res-list">
+      <li>
+        <span class="tag">数据</span>
+        <a href="https://www.gaokao.cn" target="_blank">高考网 gaokao.cn</a>
+        <span style="font-size:.82rem;color:var(--text-light);">各院校专业分数线、招生计划查询</span>
+      </li>
+      <li>
+        <span class="tag">数据</span>
+        <a href="https://www.dxsbb.com" target="_blank">大学生必备网 dxsbb.com</a>
+        <span style="font-size:.82rem;color:var(--text-light);">历年录取分数线汇总，按省份/院校查询</span>
+      </li>
+      <li>
+        <span class="tag">工具</span>
+        <a href="https://bendibao.com" target="_blank">本地宝（各地分站）</a>
+        <span style="font-size:.82rem;color:var(--text-light);">如 m.wuhu.bendibao.com，地方政策整合性好</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>培训机构信息（实地考察前参考）</h3>
+    <ul class="res-list">
+      <li><strong>安徽芜湖五线谱音乐高考集训学校</strong> — 依托安师大音乐学院资源，多媒体辅助教学，有协议班</li>
+      <li><strong>芜湖雅乐艺术培训中心</strong> — 毗邻安师大，客座教师含历届高考评委，提供免费试学一周</li>
+      <li><strong>华星学校·启赋艺术</strong> — 音乐艺考全流程服务，含送考</li>
+    </ul>
+    <div class="callout tip" style="margin-top:12px;">
+      <strong>选机构建议：</strong>2026年暑期前至少实地考察2-3家。重点看：①师资是否含安师大背景 ②是否有评委经验 ③往届录取数据 ④小三门教学是否系统 ⑤管理模式（推荐半封闭寄宿制）。
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>建议关注的时间节点（每年固定）</h3>
+    <table>
+      <tr><th>时间</th><th>关注事项</th></tr>
+      <tr><td>9月-10月</td><td>安徽省发布当年艺考招生办法、考试通知</td></tr>
+      <tr><td>10月-11月</td><td>省统考报名、考试简章发布</td></tr>
+      <tr><td>11月中旬</td><td>音乐类省统考（面试+笔试）</td></tr>
+      <tr><td>12月-1月</td><td>统考成绩公布、合格线划定</td></tr>
+      <tr><td>1月-3月</td><td>各校考院校招生简章+校考</td></tr>
+      <tr><td>6月7-9日</td><td>全国高考</td></tr>
+      <tr><td>6月23-25日</td><td>高考成绩公布、分数线划定</td></tr>
+      <tr><td>6月底-7月初</td><td>艺术类志愿填报</td></tr>
+      <tr><td>7月中下旬</td><td>录取结果查询</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ═══════════════ 7. WATCH OUT ═══════════════ -->
+<section id="watchout">
+  <h2><span class="icon">⚠️</span> 必须注意的关键点</h2>
+
+  <div class="card-grid">
+    <div class="card">
+      <h3>1. 声乐训练的特殊性</h3>
+      <p style="color:var(--text-light);">
+        声乐不像钢琴可以"堆时间练"，嗓音是生理条件+科学方法。一定要找<strong>靠谱的声乐老师</strong>，避免不科学训练损伤声带。
+        变声期后（高中阶段）是声乐训练黄金期，但也是最容易被错误方法毁掉的时期。
+      </p>
+      <div class="callout warn"><strong>注意：</strong>统考声乐<strong>无伴奏+背谱</strong>，平时练习就要习惯无伴奏演唱，不要依赖钢琴伴奏找音准。</div>
+    </div>
+
+    <div class="card">
+      <h3>2. 小三门是隐形胜负手</h3>
+      <p style="color:var(--text-light);">
+        乐理+听写+视唱=60分。多数考生花80%的时间在主项上，但主项从130提到145很难（15分提升要巨大努力），而小三门从30提到50分（20分提升）更容易。
+        且小三门短期突击效果差，<strong>必须长线积累</strong>，尤其是听写和视唱。
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>3. 文化课的"复利效应"</h3>
+      <p style="color:var(--text-light);">
+        文化课占比50%，但很多艺考生到考前3个月才真正重视。如果从现在开始保持文化课不崩盘（特别是数学英语），
+        到冲刺期会轻松很多。数学英语一旦断档，补回来非常痛苦。
+      </p>
+      <div class="callout tip"><strong>核心原则：</strong>集训期专业优先但文化不断线；统考后全力冲文化课。保持英语单词每日背诵不中断。</div>
+    </div>
+
+    <div class="card">
+      <h3>4. 钢琴副项要"巧用"</h3>
+      <p style="color:var(--text-light);">
+        副项75分不需要顶尖水平，但钢琴十级的底子可以确保稳定拿到55-65分。
+        <strong>不要因为副项分值低就不练</strong>——副项每丢1分，文化课要多考2分才能补回来。
+        建议选曲时选"稳"不选"难"，完整流畅比炫技更重要。
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>5. 选科组合的隐藏影响</h3>
+      <p style="color:var(--text-light);">
+        安徽艺术类按<strong>历史组/物理组</strong>分别划文化课线。历史组艺考生多，竞争大；物理组艺考生极少，分数门槛可能更低。
+        如果孩子物理不差，物理+化学/生物+政治的组合可能反而有优势（当然要以她实际学习能力为准，不能为了艺术考试硬选物理）。
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>6. 安师大考点 = 主场作战</h3>
+      <p style="color:var(--text-light);">
+        省统考考场就在安师大（芜湖），这是巨大的地利优势：不需要提前到外地适应环境，不需要住酒店，
+        考试当天状态更好。建议提前多次去安师大音乐学院附近走走，熟悉考场周边环境，
+        甚至可以在安师大琴房练习（如培训机构有合作关系）。
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>7. 曲目选择策略</h3>
+      <p style="color:var(--text-light);">
+        <strong>声乐曲目：</strong>选适合自己音域和音色的歌，不要盲目追求大歌、难歌。
+        考官更看重<strong>音准、节奏、乐感、表现力</strong>，而非歌曲本身难度。一首中等难度但完成度高的曲目，分数远高于勉强完成的高难度曲目。<br><br>
+        <strong>钢琴曲目：</strong>副项选曲以稳为主，练习曲+乐曲各一首，选择弹得最熟、最稳的。
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>8. 身体与心理管理</h3>
+      <p style="color:var(--text-light);">
+        声乐考生最怕<strong>感冒、嗓子不适</strong>。考前1个月要注意：饮食清淡、保暖防感、充足睡眠、不过度用嗓。
+        同时艺考主观评分因素大，发挥失常很正常，提前做好心理建设。家长的角色是<strong>情绪稳定器</strong>，不是施压者。
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>9. 2028年可能的政策变化</h3>
+      <p style="color:var(--text-light);">
+        注意关注以下可能在2028年前发生的变化：<br>
+        • 文化课占比是否进一步从50%提升到60%<br>
+        • 校考院校是否进一步缩减<br>
+        • 统考评分标准是否更加细化<br>
+        • 是否有新的"音乐+科技"交叉专业出现
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>10. 就业视角倒推选专业</h3>
+      <p style="color:var(--text-light);">
+        音乐教育（师范）就业以考编做中小学老师为主，这条路在安徽很稳但编制竞争也在加剧。
+        建议大学期间同时培养<strong>第二技能</strong>：如音频制作、音乐科技、音乐治疗、艺术管理等，
+        以应对6-7年后（2032年毕业）的就业市场变化。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ 8. CHECKLIST ═══════════════ -->
+<section id="checklist">
+  <h2><span class="icon">✅</span> 阶段行动清单</h2>
+
+  <div class="card">
+    <h3>现在–2026年暑假（当前阶段）</h3>
+    <table>
+      <tr><td><input type="checkbox" style="width:18px;height:18px;"></td><td>确定声乐主项方向，找好声乐老师开始系统学习</td></tr>
+      <tr><td><input type="checkbox" style="width:18px;height:18px;"></td><td>启动小三门系统学习（乐理/视唱/练耳）</td></tr>
+      <tr><td><input type="checkbox" style="width:18px;height:18px;"></td><td>开始每天英语单词积累（不间断）</td></tr>
+      <tr><td><input type="checkbox" style="width:18px;height:18px;"></td><td>关注"安徽省教育招生考试院"公众号</td></tr>
+      <tr><td><input type="checkbox" style="width:18px;height:18px;"></td><td>实地考察芜湖2-3家音乐培训机构</td></tr>
+      <tr><td><input type="checkbox" style="width:18px;height:18px;"></td><td>确认选科组合（注意历史/物理组对艺考的影响）</td></tr>
+      <tr><td><input type="checkbox" style="width:18px;height:18px;"></td><td>收藏本文档，建立信息追踪习惯</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>2026年9月–2027年6月（高二全年）</h3>
+    <table>
+      <tr><td><input type="checkbox" style="width:18px;height:18px;"></td><td>声乐积累3-5首备选曲目</td></tr>
+      <tr><td><input type="checkbox" style="width:18px;height:18px;"></td><td>小三门完成一轮系统学习，开始刷真题</td></tr>
+      <tr><td><input type="checkbox" style="width:18px;height:18px;"></td><td>参加1-2次模拟考试</td></tr>
+      <tr><td><input type="checkbox" style="width:18px;height:18px;"></td><td>关注2027届统考政策变化（作为2028届参考）</td></tr>
+      <tr><td><input type="checkbox" style="width:18px;height:18px;"></td><td>文化课期中/期末保持班级中上水平</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>2027年7月–11月（统考冲刺）</h3>
+    <table>
+      <tr><td><input type="checkbox" style="width:18px;height:18px;"></td><td>参加全封闭集训班（7-8月）</td></tr>
+      <tr><td><input type="checkbox" style="width:18px;height:18px;"></td><td>考试曲目最终确定并反复打磨</td></tr>
+      <tr><td><input type="checkbox" style="width:18px;height:18px;"></td><td>模拟考试3次以上，请评委点评</td></tr>
+      <tr><td><input type="checkbox" style="width:18px;height:18px;"></td><td>确认报名手续和考试流程</td></tr>
+      <tr><td><input type="checkbox" style="width:18px;height:18px;"></td><td>身体状态调整（嗓子保护、作息规律）</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>2027年12月–2028年6月（文化课冲刺）</h3>
+    <table>
+      <tr><td><input type="checkbox" style="width:18px;height:18px;"></td><td>参加艺考生文化课专项辅导班</td></tr>
+      <tr><td><input type="checkbox" style="width:18px;height:18px;"></td><td>全力冲刺文化课，目标400-450分</td></tr>
+      <tr><td><input type="checkbox" style="width:18px;height:18px;"></td><td>模拟高考至少5次，适应考试节奏</td></tr>
+      <tr><td><input type="checkbox" style="width:18px;height:18px;"></td><td>填志愿前充分研究院校数据和排名</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ═══════════════ 9. UPDATE LOG ═══════════════ -->
+<section id="log">
+  <h2><span class="icon">📝</span> 更新日志</h2>
+  <p style="color:var(--text-light);margin-bottom:16px;">此页面持续更新，记录政策变化、重要发现和进度调整。</p>
+
+  <div class="card">
+    <div class="log-entry">
+      <div class="log-date">2026-05-25 <span class="log-tag policy">初始创建</span></div>
+      <div>页面创建，整合2024-2026年安徽音乐高考全量数据。包含安师大目标分析、"声乐主项+钢琴副项"策略、备考时间轴、综合分计算器。</div>
+    </div>
+    <div class="log-entry">
+      <div class="log-date">待补充 <span class="log-tag todo">待办</span></div>
+      <div>确认孩子的选科组合（历史/物理）</div>
+    </div>
+    <div class="log-entry">
+      <div class="log-date">待补充 <span class="log-tag todo">待办</span></div>
+      <div>实地考察培训机构后记录对比信息</div>
+    </div>
+    <div class="log-entry">
+      <div class="log-date">2026年9-10月 <span class="log-tag policy">待追踪</span></div>
+      <div>关注安徽省发布2027届艺考招生办法（作为2028届最新参考）</div>
+    </div>
+    <div class="log-entry">
+      <div class="log-date">2026年11月 <span class="log-tag data">待追踪</span></div>
+      <div>2027届省统考进行，关注考试组织变化和考生反馈</div>
+    </div>
+    <div class="log-entry">
+      <div class="log-date">2027年1月 <span class="log-tag data">待追踪</span></div>
+      <div>2027届统考成绩公布，关注合格线和分数分布</div>
+    </div>
+    <div class="log-entry">
+      <div class="log-date">2027年6-7月 <span class="log-tag data">关键节点</span></div>
+      <div>2027届高考录取结束，获取安师大最新录取分数线和排名数据——这将是孩子备考2028年最重要的参考数据</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer>
+  <p>此页面专为孩子2028年音乐高考准备 &nbsp;|&nbsp; 数据来源：安徽省教育招生考试院、安师大音乐学院官网、教育部阳光高考平台</p>
+  <p style="margin-top:4px;">政策会变，数据会更新，请持续关注官方信息 &nbsp;|&nbsp; 最后更新：2026年5月25日</p>
+  <p style="margin-top:12px;font-size:.75rem;color:#aaa;">Built with ♥ for family</p>
+</footer>
+
+</div>
+
+<!-- ═══════════════ SCRIPTS ═══════════════ -->
+<script>
+// ── Calculator ──
+function calc() {
+  const culture = parseFloat(document.getElementById('cultureScore').value) || 0;
+  const prof = parseFloat(document.getElementById('profScore').value) || 0;
+  const result = culture * 0.5 + prof * 2.5 * 0.5;
+  document.getElementById('result').textContent = result.toFixed(2);
+
+  const verdict = document.getElementById('verdict');
+  if (result >= 510) {
+    verdict.textContent = '稳上安师大 🎉';
+    verdict.className = 'verdict good';
+  } else if (result >= 490) {
+    verdict.textContent = '有希望，需冲刺 ⚡';
+    verdict.className = 'verdict warn';
+  } else {
+    verdict.textContent = '还需努力提高 📈';
+    verdict.className = 'verdict bad';
+  }
+}
+
+// ── Nav highlight ──
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-bar a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 120) current = s.id;
+  });
+  navLinks.forEach(a => {
+    a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+  });
+});
+
+// ── Smooth scroll ──
+document.querySelectorAll('.nav-bar a').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+
+// ── Init calc ──
+calc();
+
+// ── LocalStorage for checkboxes ──
+document.querySelectorAll('input[type="checkbox"]').forEach((cb, i) => {
+  const key = 'wy_gk_' + i;
+  cb.checked = localStorage.getItem(key) === 'true';
+  cb.addEventListener('change', () => localStorage.setItem(key, cb.checked));
+});
+</script>
+
+</body>
+</html>
